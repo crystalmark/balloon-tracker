@@ -1,0 +1,12 @@
+<Placemark>
+  <name>Balloon Current Location</name>
+  <description>Last reported position of balloon</description>
+<styleUrl>#balloon</styleUrl> 
+  <LookAt>
+    <longitude>{longitude}</longitude>
+    <latitude>{latitude}</latitude>
+  </LookAt>
+  <Point>
+    <coordinates>{longitude},{latitude}</coordinates>
+  </Point>
+</Placemark>

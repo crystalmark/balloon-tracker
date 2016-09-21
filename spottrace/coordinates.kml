@@ -1,0 +1,6 @@
+    <Placemark>
+      <name>Balloon Flight Track</name>
+      <styleUrl>#blueLine</styleUrl>
+      <LineString>
+        <altitudeMode>relative</altitudeMode>
+        <coordinates>
