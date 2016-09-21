@@ -21,6 +21,6 @@ The web page is nothing fancy, simple an HTML page that displays a Google Map wh
 
 ## Set-up
 ### SPOT Tracker
-	Get the FEED_ID from the findmespot.eu website by creating a new share feed:
+Get the FEED_ID from the findmespot.eu website by creating a new share feed:
 https://login.findmespot.com/spot-main-web/myaccount/share/list.html
 The FEED_ID is the glId parameter that appears in the feed details URL.
