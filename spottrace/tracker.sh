@@ -18,9 +18,9 @@ cat placemark.kml >> $KML
 cat coordinates.kml >> $KML
 sed -i "s/{latitude}/$lat/g" $KML
 sed -i "s/{longitude}/$long/g" $KML
-coord="$lat,$long,0"
+coord="$long,$lat,0"
 touch $COORDS
-if grep -q $coord $COORDS; then
+if grep -q -- "$coord" $COORDS; then
 	echo "$coord already logged.  No status update received."
 else
 	echo $coord >> $COORDS

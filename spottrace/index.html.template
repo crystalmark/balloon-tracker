@@ -1,36 +1,70 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="initial-scale=1.0">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Crystalmark Aerial Photography Balloon Location</title>
     <style>
       html, body {
         height: 100%;
-        margin: 0;
         padding: 0;
-      }
+        margin: 0;
+        }
       #map {
-        height: 100%;
-      }
+       height: 100%;
+       width: 90%;
+       overflow: hidden;
+       float: left;
+       border: thin solid #333;
+       }
+      #capture {
+       height: 100%;
+       width: 10%;
+       overflow: hidden;
+       float: left;
+       background-color: #ECECFB;
+       border: thin solid #333;
+       border-left: none;
+       }
     </style>
   </head>
   <body>
-    <div id="map"></div>
     <script>
+      var map;
+      var src = 'https://aerial.crystalmark.co.uk/balloon/balloon.kml?rev={rev}';
 
+      /**
+       * Initializes the map and calls the function that creates polylines.
+       */
       function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11
         });
+        loadKmlLayer(src, map);
+      }
 
-        var balloonLayer = new google.maps.KmlLayer({
-          url: 'https://aerial.crystalmark.co.uk/balloon/balloon.kml?rev={rev}',
+      /**
+       * Adds a KMLLayer based on the URL passed. Clicking on a marker
+       * results in the balloon content being loaded into the right-hand div.
+       * @param {string} src A URL for a KML file.
+       */
+      function loadKmlLayer(src, map) {
+        var kmlLayer = new google.maps.KmlLayer(src, {
+          suppressInfoWindows: true,
+          preserveViewport: false,
           map: map
         });
-      }
-    </script>
+        google.maps.event.addListener(kmlLayer, 'click', function(event) {
+          var content = event.featureData.infoWindowHtml;
+          var testimonial = document.getElementById('capture');
+          testimonial.innerHTML = content;
+        });
+       }
+      </script>
+    <div id="map"></div>
     <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC946nTvYSkuPvfi_bZgBmhctXHHt38CA&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC946nTvYSkuPvfi_bZgBmhctXHHt38CA&callback=initMap">
     </script>
+    <div id="capture"></div>
   </body>
 </html>
