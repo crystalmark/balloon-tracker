@@ -13,11 +13,11 @@ KML=/tmp/balloon.kml
 wget -q https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/$FEED_ID/latest.xml -O $LATEST
 lat=$(grep -oPm1 "(?<=<latitude>)[^<]+" $LATEST)
 long=$(grep -oPm1 "(?<=<longitude>)[^<]+" $LATEST)
-cat head.kml > $COORDS
-cat placemark.kml >> $COORDS
-cat coordinates.kml >> $COORDS
-sed -i "s/{latitude}/$lat/g" $COORDS
-sed -i "s/{longitude}/$long/g" $COORDS
+cat head.kml > $KML
+cat placemark.kml >> $KML
+cat coordinates.kml >> $KML
+sed -i "s/{latitude}/$lat/g" $KML
+sed -i "s/{longitude}/$long/g" $KML
 coord="$lat,$long,0"
 touch $COORDS
 if grep -q $coord $COORDS; then
