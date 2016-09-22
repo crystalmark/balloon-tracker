@@ -24,7 +24,7 @@
         });
 
         var balloonLayer = new google.maps.KmlLayer({
-          url: 'https://aerial.crystalmark.co.uk/balloon/balloon.kml?rev=4',
+          url: 'https://aerial.crystalmark.co.uk/balloon/balloon.kml?rev={rev}',
           map: map
         });
       }
