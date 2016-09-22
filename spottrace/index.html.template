@@ -3,6 +3,7 @@
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
+    <META HTTP-EQUIV="refresh" CONTENT="600">
     <title>Crystalmark Aerial Photography Balloon Location</title>
     <style>
       html, body {
@@ -65,6 +66,6 @@
     <script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC946nTvYSkuPvfi_bZgBmhctXHHt38CA&callback=initMap">
     </script>
-    <div id="capture"></div>
+    <div id="capture"><A HREF="javascript:history.go(0)">refresh now</A></div>
   </body>
 </html>
