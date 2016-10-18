@@ -5,10 +5,11 @@ from logging.handlers import TimedRotatingFileHandler
 
 def status(colour):
     try:
-        f = open("temperaturestatus", "w+")
+        f = open("/tmp/temperaturestatus", "w+")
         f.write(colour)
         f.close()
-    except:
+    except Exception as e:
+        print e
         print "Unable to write temperature status"
 
 def read(id):
@@ -25,7 +26,7 @@ def read(id):
 logger = logging.getLogger("Temperature Log")
 logger.setLevel(logging.INFO)
 
-sensor = TimedRotatingFileHandler('temperature' , when='M', interval=10)
+sensor = TimedRotatingFileHandler('/home/pi/temperature' , when='M', interval=10)
 logger.addHandler(sensor)
 
 while True:

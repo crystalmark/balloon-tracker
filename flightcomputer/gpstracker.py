@@ -13,12 +13,12 @@ from logging.handlers import TimedRotatingFileHandler
 
 def status(colour):
     try:
-        f = open("gpsstatus", "w+")
+        f = open("/tmp/gpsstatus", "w+")
         f.write(colour)
         f.close()
-    except:
+    except Exception as inst:
+        print inst
         print "Unable to write GPS status"
-
 
 class GpsPoller(threading.Thread):
 
@@ -51,7 +51,6 @@ if __name__ == '__main__':
         while True:
             # print("GPS Log...")
             report = gpsp.get_current_value()
-            # print report
             try: 
                 if report.keys()[0].startswith('ep'):
                     status("green")

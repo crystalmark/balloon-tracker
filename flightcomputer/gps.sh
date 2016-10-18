@@ -2,7 +2,10 @@
 # Run this as part of the boot sequence.  On my pi zero, the gpsd 
 # would not work so I stopped it and started my own instance with
 # USB0 
-# @reboot for the root crontab works well to start this script
+# @reboot for the root crontab works well to start this scriptsu
+su -c "touch /tmp/gpsstatus" pi
+su -c "touch /tmp/temperaturestatus" pi
+su -c "touch /tmp/camerastatus" pi
 while true; do
     sleep 20
     if ! pidof python | grep gps.py >/dev/null; then

@@ -27,7 +27,7 @@ show()
 sleep(1)
 while True:
     try:
-        f = open('gpsstatus', 'r')
+        f = open('/tmp/gpsstatus', 'r')
         st(2, f.readline().strip())
         f.close()
         show()
@@ -37,7 +37,7 @@ while True:
         set_pixel(2,0,0,0)
         show()
     try:
-        f = open('temperaturestatus', 'r')
+        f = open('/tmp/temperaturestatus', 'r')
         st(4, f.readline().strip())
         f.close()
         show()
@@ -47,7 +47,7 @@ while True:
         set_pixel(4,0,0,0)
         show()
     try:
-        f = open('camerastatus', 'r')
+        f = open('/tmp/camerastatus', 'r')
         st(6, f.readline().strip())
         f.close()
         show()
@@ -56,4 +56,4 @@ while True:
         print inst
         set_pixel(6,0,0,0)
         show()
-    sleep(0.5)
+    sleep(1)
